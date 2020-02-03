@@ -2,13 +2,13 @@ package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
 
-public class Employer extends Job {
+public class Employer {
     private int id;
     private static int nextId = 1;
     private String value;
 
     //Set ID for new Employee & add 1 to ID Number
-    public Job() {
+    public Employer() {
         id = nextId;
         nextId++;
     }
