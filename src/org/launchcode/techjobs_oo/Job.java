@@ -1,6 +1,8 @@
 package org.launchcode.techjobs_oo;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Job {
@@ -49,12 +51,35 @@ public class Job {
 
     @Override
     public String toString() {
-        String output = "Name: " + getName() + "\n" +
-                "employer: "+ getEmployer() + "\n" +
-                "Location: "+ getLocation() + "\n" +
-                "positionType: "+ getPositionType() + "\n" +
-                "coreCompetency: "+ getCoreCompetency() + "\n";
-        return  output;
+        //construct ArrayList of Getters in order to choose correct option depending on what information is available
+        List<Object> options = new ArrayList<>();
+        options.add(getId());
+        options.add(getName());
+        options.add(getEmployer());
+        options.add(getLocation());
+        options.add(getPositionType());
+        options.add(getCoreCompetency());
+        int count = 0;
+
+        //Construct object variables to represent getters in String output
+        //Iterate through options to verify information, IF blank return:
+        if (name.isBlank()&&employer.toString().isBlank()&&location.toString().isBlank()&&positionType.toString().isBlank()&&coreCompetency.toString().isBlank()) {
+            return "OOPS! This job does not seem to exist.";
+        }else{
+        for (Object option:options) {
+            if (option.toString().isEmpty()) {
+                options.set(count, "Data not available");
+            }
+            count++;
+        }
+
+        }
+        return "ID: " + options.get(0) + "\n" +
+                "Name: " + options.get(1) + "\n" +
+                "employer: "+ options.get(2) + "\n" +
+                "Location: "+ options.get(3) + "\n" +
+                "positionType: "+ options.get(4) + "\n" +
+                "coreCompetency: "+ options.get(5) + "\n";
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID

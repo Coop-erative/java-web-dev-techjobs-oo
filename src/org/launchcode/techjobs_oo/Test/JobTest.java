@@ -3,6 +3,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTest {
@@ -37,17 +39,34 @@ public class JobTest {
         assertFalse(testJob3.equals(testJob4));
     }
     public void jobConstructorTest() {
-        Job jobTest = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job jobTest = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
         assertEquals(1,jobTest.getId());
     }
     @Test
     public void jobToStringTest() {
-        assertEquals("ID: " +"Name: Product tester\n" +
+        assertEquals("ID: 11" + "\n" +
+                "Name: Product Tester\n" +
                 "employer: ACME\n" +
                 "Location: Desert\n" +
-                "positionType: Quality control\n" +
-                "coreCompetency: Persistence", testJob3.toString());
+                "positionType: Quality Control\n" +
+                "coreCompetency: Persistence\n", testJob3.toString());
+    }
 
+    @Test
+    public void jobDoesNotExist() {
+        Job jobTest = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        assertEquals("OOPS! This job does not seem to exist.",jobTest.toString());
+    }
+
+    @Test
+    public void jobDataNotAvailableTest() {
+        Job jobTest = new Job("Product tester", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        assertEquals("ID: 7" + "\n" +
+                "Name: Product tester\n" +
+                "employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "positionType: Data not available\n" +
+                "coreCompetency: Data not available\n", jobTest.toString());
     }
     //Test CoreCompetency
 
