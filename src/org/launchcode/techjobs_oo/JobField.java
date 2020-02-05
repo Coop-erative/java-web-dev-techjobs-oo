@@ -1,16 +1,56 @@
 package org.launchcode.techjobs_oo;
 
-public class JobField {
-    /*
-    What fields do ALL FOUR of the classes have in common?
-    Which constructors are the same in ALL FOUR classes?
-    What getters and setters do ALL of the classes share?
-    Which custom methods are identical in ALL of the classes?
-    In JobField, declare each of the common fields.
-    Code the constructors.
-    Use Generate to create the appropriate getters and setters.
-    Add in the custom methods.
-    Finally, to prevent the creation of a JobField object, make this class abstract.
-    Extend JobField into Employer
-     */
+import java.util.Objects;
+
+public abstract class JobField {
+    //Intended to have Employer, CoreCompetency, Location & PositionType classes as children.
+
+    private int id;
+    private static int nextId = 1;
+    private String value;
+
+    //Common Methods for Employer, CoreCompetency, Location & PositionType Classes.
+
+    public JobField() {
+    id = nextId;
+    nextId++;
+}
+    public JobField(String value) {
+    this();
+    this.value = value;
+}
+
+
+    @Override
+    public String toString() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {  // Two objects are equal if they have the same id.
+        if (this == o) return true;
+        if (!(o instanceof JobField)) return false;
+        JobField jobField = (JobField) o;
+        return getId() == jobField.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    // Getters and Setters:
+
+    public int getId() {
+        return id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
 }

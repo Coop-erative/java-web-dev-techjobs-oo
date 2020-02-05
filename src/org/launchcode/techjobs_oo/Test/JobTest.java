@@ -1,10 +1,8 @@
 package org.launchcode.techjobs_oo.Test;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
-
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JobTest {
@@ -13,7 +11,6 @@ public class JobTest {
     Job testJob1, testJob2,testJob3,testJob4;
 
     //Test job
-
     @Before
     public void setup() {
         testJob1 = new Job();
@@ -44,7 +41,7 @@ public class JobTest {
     }
     @Test
     public void jobToStringTest() {
-        assertEquals("ID: 11" + "\n" +
+        assertEquals("ID: 12" + "\n" +
                 "Name: Product Tester\n" +
                 "employer: ACME\n" +
                 "Location: Desert\n" +
@@ -61,7 +58,7 @@ public class JobTest {
     @Test
     public void jobDataNotAvailableTest() {
         Job jobTest = new Job("Product tester", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-        assertEquals("ID: 7" + "\n" +
+        assertEquals("ID: 9" + "\n" +
                 "Name: Product tester\n" +
                 "employer: Data not available\n" +
                 "Location: Data not available\n" +
@@ -69,11 +66,28 @@ public class JobTest {
                 "coreCompetency: Data not available\n", jobTest.toString());
     }
     //Test CoreCompetency
-
+    @Test
+    public void jobFieldsExtendsCoreCompetency() {
+        CoreCompetency testEmployer1 = new CoreCompetency("string");
+        assertEquals("string",testEmployer1.toString());
+    }
     //Test Employer
+    @Test
+    public void jobFieldsExtendsEmployer() {
+        Employer testEmployer = new Employer("string");
+        assertEquals("string",testEmployer.toString());
+    }
 
     //Test Location
-
+    @Test
+    public void jobFieldsExtendsLocation() {
+        Location testLocation = new Location("string");
+        assertEquals("string",testLocation.toString());
+    }
     //Test PositionType
-
+    @Test
+    public void jobFieldsExtendsPositionType() {
+        PositionType testPositionType = new PositionType("string");
+        assertEquals("string",testPositionType.toString());
+    }
 }

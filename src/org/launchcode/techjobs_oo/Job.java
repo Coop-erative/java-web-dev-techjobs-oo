@@ -32,7 +32,6 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
-        new Job();
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
